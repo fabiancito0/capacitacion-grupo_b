@@ -1,0 +1,10 @@
+%dw 2.0
+
+type auto_b53a7f9c_fb91_4c7a_a900_ac5f38b58a4a_Input_Payload = {|
+  id_agenda: Any, 
+  nombre: Any, 
+  telefono: Any, 
+  nacion: Any, 
+  lada: String
+|}
+

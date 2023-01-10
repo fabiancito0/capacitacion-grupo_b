@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
+	<flow name="get-usuariosFlow" doc:id="1ff57864-7d09-4013-bebb-f28cdaf4cd91" >
+		<scheduler doc:name="Scheduler" doc:id="9d51ba09-9fdf-45d4-8258-e57e1add4adf" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="24" timeUnit="DAYS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<flow-ref doc:name="Get agenda" doc:id="1391afda-bd6b-4597-a1eb-1cc619762995" name="read-agenda-mysql-clientSub_Flow"/>
+		<foreach doc:name="For Each" doc:id="0b516b42-f37c-4371-ad77-b9fb75f144d3" collection="#[vars.users]">
+			<ee:transform doc:name="Transform Message" doc:id="2ed0dedb-ca1e-4da4-81d4-cd129fc212e2">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+   "id_agenda":payload.id_agenda,
+   "nombre":payload.nombre,
+   "telefono":payload.telefono,
+   "nacion":payload.nacion,
+   "lada":"+52"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+			<logger level="INFO" doc:name="Logger" doc:id="9dc45efc-e077-4574-afbd-f1ac47df6a8f" message="#[payload]" />
+			<flow-ref doc:name="Actualizar Agenda" doc:id="94746c3e-f15f-458f-ac14-0a71a70afe1c" name="update-agenda-mysql-clientSub_Flow"/>
+		</foreach>
+	</flow>
+	<flow name="post-AgendasFlow" doc:id="f77ae183-5df0-45fd-84a9-df93af83fa04" >
+		<scheduler doc:name="Scheduler" doc:id="0d8cf068-7b36-4df2-825b-c2ff3ee6b3c6" >
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</scheduler>
+		<ee:transform doc:name="Transform Message" doc:id="247494d4-5e6a-4403-a0ba-a4e23e050a94" >
+			<ee:message >
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="fernandos" ><![CDATA[%dw 2.0
+output application/java
+---
+[
+	{
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+	{
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+	{
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    },
+    {
+   "nombre":"Fernando",
+   "telefono":5565984512,
+   "nacion":"MX",
+   "lada":""
+    }
+]]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<foreach doc:name="For Each" doc:id="aa3fbdad-a33e-4f44-875e-36f658d8a3dc" collection="#[vars.fernandos]">
+			<flow-ref doc:name="Insert Agenda" doc:id="8066de70-382e-46ea-a196-37b2265b678d" name="post-agenda-mysql-clientFlow"/>
+		</foreach>
+	</flow>
+</mule>
