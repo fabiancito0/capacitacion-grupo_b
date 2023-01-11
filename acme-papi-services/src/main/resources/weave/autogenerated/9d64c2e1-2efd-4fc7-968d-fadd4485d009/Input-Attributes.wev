@@ -1,0 +1,23 @@
+%dw 2.0
+
+type auto_9d64c2e1_2efd_4fc7_968d_fadd4485d009_Input_Attributes = {|
+  clientCertificate?: {|
+    publicKey?: {|  |}, 
+    "type"?: String, 
+    encoded?: Binary
+  |}, 
+  headers: {|  |}, 
+  listenerPath: String, 
+  method: String, 
+  queryParams: {|  |}, 
+  queryString: String, 
+  relativePath: String, 
+  remoteAddress: String, 
+  requestPath: String, 
+  requestUri: String, 
+  scheme: String, 
+  uriParams: {| school_id: Number |}, 
+  version: String, 
+  localAddress: String
+|}
+

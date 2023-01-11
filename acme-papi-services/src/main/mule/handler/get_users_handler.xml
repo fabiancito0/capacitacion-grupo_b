@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="get_users_handlerFlow" doc:id="0e5bd76f-a201-44df-85bf-801598b4dd84" >
+		<ee:transform doc:name="Transform Message" doc:id="435f1d81-b3d3-42b0-bdba-b3d1601f46b8" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[attributes.uriParams.'school_id']]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<flow-ref doc:name="Call Orchestor" doc:id="af339a78-83b4-4722-8143-39d47fc9cf10" name="get_users_orchestatorFlow"/>
+	</flow>
+</mule>

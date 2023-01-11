@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<db:config name="MySQL_Database_Config" doc:name="Database Config" doc:id="19a0a653-b0c6-4922-8bd5-5e87e1fe5faa" >
+		<db:my-sql-connection host="tecnologiadenegocios.com" port="3306" user="tecnol91_grupo_b" password="Contrasenia__:" database="tecnol91_usuarios" />
+	
+</db:config>	
+</mule>

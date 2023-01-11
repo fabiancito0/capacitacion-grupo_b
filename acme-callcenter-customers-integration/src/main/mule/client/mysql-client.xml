@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	
+	<sub-flow name="read-agenda-mysql-clientSub_Flow" doc:id="77352bbb-3de3-499f-9cb0-50701407a2a4" >
+		<db:select doc:name="Select" doc:id="fbd55a93-40a7-4fb1-afc4-deacac3b739f" config-ref="MySQL_Database_Config" target="users">
+			<db:sql ><![CDATA[SELECT * FROM tecnol91_usuarios.agenda]]></db:sql>
+		</db:select>
+	</sub-flow>
+	<sub-flow name="update-agenda-mysql-clientSub_Flow" doc:id="b53a7f9c-fb91-4c7a-a900-ac5f38b58a4a" >
+		<db:update doc:name="Update" doc:id="8dc3f2ae-fbb2-4b74-8b8d-cd5e21fd5d40" config-ref="MySQL_Database_Config">
+			<db:sql ><![CDATA[UPDATE tecnol91_usuarios.agenda
+SET lada = :lada
+WHERE id_agenda = :id]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"lada":payload.lada,
+	"id":payload.id_agenda
+}]]]></db:input-parameters>
+		</db:update>
+	</sub-flow>
+	<sub-flow name="post-agenda-mysql-clientFlow" doc:id="2cdee980-f964-47ef-953e-e24563613f41" >
+		<db:insert doc:name="Insert" doc:id="16b40010-44c5-42be-b6ad-96c29f219bd4" config-ref="MySQL_Database_Config">
+			<db:sql ><![CDATA[insert into tecnol91_usuarios.agenda
+(nombre, telefono, nacion, lada)
+VALUES (:nombre, :telefono, :nacion, :lada);]]></db:sql>
+			<db:input-parameters ><![CDATA[#[payload]]]></db:input-parameters>
+		</db:insert>
+	</sub-flow>
+</mule>
