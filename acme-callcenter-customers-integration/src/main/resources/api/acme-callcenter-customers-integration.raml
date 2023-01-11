@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: <Operaciones Agenda>
+version: v1
+
+/agendas:
+  get:
+    description: obtener lista de usuarios
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                 "id_usuario":"1",
+                 "name":"fabian",
+                 "tel":"5535892711",
+                 "nacion":"México",
+                 "lada":"+52"
+              }    
+  post:
+    description: 
+    body:
+      application/json:
+        type: object
+        properties:
+          id_usuario: 
+            type: number
+            required: true
+          name:
+            type: string
+            required: true
+          tel:
+            type: string
+            required: true
+          nacion:
+            type: string
+            required: true
+          lada:
+            type: string
+            required: true
+        example: |
+          {
+             "id_usuario": 1,
+             "name": "paco",
+             "tel": "1234566789",
+             "nacion":"mexico",
+             "lada":"+52" 
+          }
+    responses:
+      201:
+        description: aregar agenda
+            
